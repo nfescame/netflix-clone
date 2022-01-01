@@ -1,0 +1,51 @@
+.moveRow {
+  margin-bottom: 30px;
+}
+.moveRow h2 {
+  margin: 0px 0px 0px 30px;
+}
+.moveRow--listarea {
+  overflow-x: hidden;
+  padding-left: 30px;
+}
+.moveRow--list {
+  width: 99999999px;
+}
+.moveRow--item {
+  display: inline-block;
+  width: 150px;
+  cursor: pointer;
+}
+.moveRow--item img {
+  width: 100%;
+  transform: scale(0.9);
+  transition: all ease 0.2s;
+}
+.moveRow--item img:hover {
+  transform: scale(1);
+}
+.moveRow--leftIcon,
+.moveRow--rigthIcon {
+  position: absolute;
+  width: 40px;
+  height: 225px;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  transition: all ease 0.5s;
+}
+.moveRow--leftIcon {
+  left: 0;
+}
+.moveRow--rigthIcon {
+  right: 0;
+}
+.moveRow:hover .moveRow--leftIcon,
+.moveRow:hover .moveRow--rigthIcon {
+  opacity: 1;
+}

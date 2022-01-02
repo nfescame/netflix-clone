@@ -5,12 +5,31 @@ import MovieRow from "./components/movieRow";
 import FeacturedMovie from "./components/featuredMovie";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Modal from "./components/modal";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function App() {
   const [movieList, setMoveList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
   const [blackHeader, setBlackHeader] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [details, setDetails] = useState();
+  const [type, setType] = useState();
+
+  const handleItemDetails = async (e) => {
+    let details = await Tmdb.getMovieInfo(e, "tv");
+    setType("tv");
+    if (details.status_code === 34) {
+      details = await Tmdb.getMovieInfo(e, "movie");
+      setType("movie");
+    }
+    setDetails(details);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   useEffect(() => {
     const loadAll = async () => {
@@ -49,12 +68,22 @@ export default function App() {
 
   return (
     <div className='page'>
+      {modalIsOpen && (
+        <Modal details={details} type={type} closeModal={closeModal} />
+      )}
       <Header black={blackHeader} />
       {featuredData && <FeacturedMovie featuredData={featuredData} />}
 
       <section className='lists'>
         {movieList.map((item, key) => {
-          return <MovieRow key={key} title={item.title} items={item.items} />;
+          return (
+            <MovieRow
+              key={key}
+              title={item.title}
+              items={item.items}
+              handleItemDetails={handleItemDetails}
+            />
+          );
         })}
       </section>
       <Footer />

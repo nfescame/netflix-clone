@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { NavigateBefore, NavigateNext } from "@material-ui/icons";
-import Tmdb from "../../tmdbAPI/Tmdb";
 
 import "./style.css";
 
-export default function MovieRow({ title, items }) {
+export default function MovieRow({ title, items, handleItemDetails }) {
   const [scrollX, setScrollX] = useState(0);
 
   const handleLeftArrow = () => {
@@ -21,15 +20,6 @@ export default function MovieRow({ title, items }) {
       x = window.innerWidth - listW - 60;
     }
     setScrollX(x);
-  };
-
-  const handleItemDetails = async (e) => {
-    let details = await Tmdb.getMovieInfo(e, "tv");
-
-    if (details.status_code === 34) {
-      details = await Tmdb.getMovieInfo(e, "movie");
-    }
-    console.log(details);
   };
 
   return (

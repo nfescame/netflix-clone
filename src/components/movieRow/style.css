@@ -9,7 +9,7 @@
   padding-left: 30px;
 }
 .moveRow--list {
-  width: 99999999px;
+  transition: all ease 0.5s;
 }
 .moveRow--item {
   display: inline-block;
@@ -48,4 +48,11 @@
 .moveRow:hover .moveRow--leftIcon,
 .moveRow:hover .moveRow--rigthIcon {
   opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .moveRow--leftIcon,
+  .moveRow--rigthIcon {
+    opacity: 1;
+  }
 }

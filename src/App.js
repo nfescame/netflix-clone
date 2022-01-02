@@ -8,7 +8,7 @@ import Footer from "./components/footer";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function App() {
-  const [moveList, setMoveList] = useState([]);
+  const [movieList, setMoveList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
   const [blackHeader, setBlackHeader] = useState(false);
 
@@ -53,11 +53,19 @@ export default function App() {
       {featuredData && <FeacturedMovie featuredData={featuredData} />}
 
       <section className='lists'>
-        {moveList.map((item, key) => {
+        {movieList.map((item, key) => {
           return <MovieRow key={key} title={item.title} items={item.items} />;
         })}
       </section>
       <Footer />
+      {movieList.length <= 0 && (
+        <div className='loading'>
+          <img
+            src='https://i.gifer.com/origin/36/36527397c208b977fa3ef21f68c0f7b2.gif'
+            alt='loading'
+          />
+        </div>
+      )}
     </div>
   );
 }

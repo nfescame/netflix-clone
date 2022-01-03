@@ -13,7 +13,7 @@ header {
   transition: all ease 0.5s;
 }
 
-header.BGblack {
+.BGblack {
   background-color: #141414;
 }
 .header--logo {

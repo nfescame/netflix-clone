@@ -16,12 +16,12 @@ export default function App() {
   const [details, setDetails] = useState();
   const [type, setType] = useState();
 
-  const handleItemDetails = async (e) => {
-    let details = await Tmdb.getMovieInfo(e, "tv");
-    setType("tv");
-    if (details.status_code === 34) {
-      details = await Tmdb.getMovieInfo(e, "movie");
-      setType("movie");
+  const handleItemDetails = async (e, title, name) => {
+    let details = await Tmdb.getMovieInfo(e, "movie");
+    setType("movie");
+    if (details.title !== title || details.name !== name) {
+      details = await Tmdb.getMovieInfo(e, "tv");
+      setType("tv");
     }
     setDetails(details);
     setModalIsOpen(true);

@@ -42,7 +42,9 @@ export default function MovieRow({ title, items, handleItemDetails }) {
               <div
                 key={key}
                 className='moveRow--item'
-                onClick={() => handleItemDetails(item.id)}
+                onClick={() =>
+                  handleItemDetails(item.id, item.title, item.name)
+                }
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}

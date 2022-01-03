@@ -1,15 +1,6 @@
 const API_KEY = "165e15c96a8d933416b320f3ad3b78c0";
 const API_BASE = "https://api.themoviedb.org/3";
 
-// originais da netiflix
-// recomendados(trending)
-// em alta (toprated)
-// ação
-// comedia
-// terror
-// romance
-// documentario
-
 const basicFetch = async (endpoint) => {
   const req = await fetch(`${API_BASE}${endpoint}`);
   const json = await req.json();

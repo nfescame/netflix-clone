@@ -20,7 +20,6 @@ const labels = {
 };
 
 export default function Modal({ details, type, closeModal }) {
-  console.log(details, type);
   const infoModal = {
     name: type === "tv" ? details.name : details.title,
     rating: details.vote_average,

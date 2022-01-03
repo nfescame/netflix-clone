@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
 import "./style.css";
 import CloseIcon from "@material-ui/icons/Close";
@@ -24,7 +25,10 @@ export default function Modal({ details, type, closeModal }) {
     name: type === "tv" ? details.name : details.title,
     rating: details.vote_average,
     runtime: details.runtime,
-    release_date: type === "tv" ? details.first_air_date : details.release_date,
+    release_date:
+      type === "tv"
+        ? new Date(details.first_air_date)
+        : new Date(details.release_date),
     genres: details.genres,
     vote_count: details.vote_count,
   };
@@ -48,7 +52,7 @@ export default function Modal({ details, type, closeModal }) {
               alt={infoModal.name}
             />
           </div>
-          <div style={{ width: "70%" }}>
+          <div className='modal--content'>
             <div className='modal--title'>
               <h2>{infoModal.name}</h2>
             </div>
@@ -70,13 +74,7 @@ export default function Modal({ details, type, closeModal }) {
               </div>
               <div style={{ width: "50%" }}>
                 <span>Your rating: </span>
-                <Box
-                  sx={{
-                    width: 200,
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
+                <Box className='modal--boxRating'>
                   <Rating
                     name='customized-10'
                     defaultValue={2}
@@ -103,7 +101,7 @@ export default function Modal({ details, type, closeModal }) {
             </div>
             <div className='modal--timeDate'>
               <p>{infoModal.runtime} Minutes</p>
-              <p>Release date: {infoModal.release_date}</p>
+              <p>Release date: {infoModal.release_date.getFullYear()}</p>
             </div>
             <div style={{ display: "flex", paddingLeft: "32px" }}>
               <label className='modal--labelGenres'>Genres</label>
@@ -125,10 +123,10 @@ export default function Modal({ details, type, closeModal }) {
             <p>{details.overview}</p>
           </div>
         </div>
-      </div>
-
-      <div>
-        <CloseIcon className='modal--iconClose' onClick={() => closeModal()} />
+        <a className='modal--close' onClick={() => closeModal()}>
+          <p>close</p>
+          <CloseIcon className='modal--iconClose' />
+        </a>
       </div>
     </section>
   );

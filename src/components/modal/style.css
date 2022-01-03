@@ -1,9 +1,9 @@
 .modal {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.95);
   width: 100%;
   height: 100vh;
-  z-index: 100;
+  z-index: 9999;
   top: 0px;
   left: 0px;
   right: 0;
@@ -16,11 +16,14 @@
 
 .modal--container {
   width: 60%;
-  height: 60vh;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 30px;
   max-width: 700px;
+  border: 2px solid #b7b1b1;
 }
 .modal--img {
   width: 150px;
@@ -32,14 +35,25 @@
 }
 .modal--info {
   width: 100%;
-  height: 223px;
   background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   border-radius: 10px;
+  box-shadow: 0px 0px 112px -41px rgb(255, 25, 195),
+    0 -10px 26px -5px rgb(41, 158, 137);
+  transition: all ease 1s;
+}
+.modal--info:hover {
+  width: 100%;
+  box-shadow: 0px 0px 112px -41px rgb(255, 25, 195),
+    0 -10px 26px -5px rgb(0, 220, 255), 0px 0px 112px -41px rgb(122, 255, 0),
+    0 -10px 26px -5px rgb(0, 254, 207);
 }
 .modal--title {
   font-size: 1rem;
   padding: 0 10px;
+}
+.modal--content {
+  width: 70%;
 }
 .modal--title h2 {
   margin: 1.5rem 0 0.5rem 1rem;
@@ -61,6 +75,11 @@
   font-size: 1.5rem;
   font-weight: bold;
   font-family: "Times New Roman", Times, serif;
+}
+.modal--boxRating {
+  width: 200px;
+  display: flex;
+  align-items: center;
 }
 .modal--votes {
   font-family: "Times New Roman", Times, serif;
@@ -95,19 +114,71 @@
 
 .modal--infoDonw {
   background-color: rgba(0, 0, 0, 0.9);
-  height: 23vh;
   border-radius: 10px;
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
+  box-shadow: 0px 0px 112px -41px rgb(255, 25, 195),
+    0 -10px 26px -5px rgb(41, 158, 137);
+  transition: all ease 1s;
 }
 .modal--infoDonw label {
   padding: 1rem 0 0 0;
   font-family: "Times New Roman", Times, serif;
 }
+.modal--infoDonw:hover {
+  box-shadow: 0px 0px 112px -41px rgb(255, 25, 195),
+    0 -10px 26px -5px rgb(0, 220, 255), 0px 0px 112px -41px rgb(122, 255, 0),
+    0 -10px 26px -5px rgb(0, 254, 207);
+}
 
 .modal--description {
+  min-width: 640px;
   font-family: "Times New Roman", Times, serif;
+}
+.modal--close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #b7b1b1;
+  font-weight: bold;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  transition: all ease 0.5s;
+}
+.modal--close:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1110px) {
+  .modal--description {
+    min-width: 200px;
+  }
+}
+@media (max-width: 960px) {
+  .modal--boxRating {
+    display: none;
+  }
+  .modal--img {
+    display: none;
+  }
+  .modal--content {
+    width: 100%;
+  }
+}
+@media (max-width: 750px) {
+  .modal--container {
+    width: 90%;
+  }
+  .modal--description {
+    min-width: 100px;
+  }
+}
+@media (max-width: 500px) {
+  .modal--listGenres {
+    display: block;
+  }
 }
